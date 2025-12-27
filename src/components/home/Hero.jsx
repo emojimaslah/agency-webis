@@ -1,52 +1,71 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Scene3D from '../Scene3D';
 
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center bg-gray-50 overflow-hidden pt-20">
-            {/* Background Decorative Blobs */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                <div className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-blue-200/30 blur-3xl" />
-                <div className="absolute top-[40%] -right-[10%] w-[50%] h-[50%] rounded-full bg-blue-300/20 blur-3xl" />
-                <div className="absolute -bottom-[10%] left-[20%] w-[40%] h-[40%] rounded-full bg-indigo-200/30 blur-3xl" />
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+            <div className="canvas-container !absolute">
+                <Suspense fallback={null}>
+                    <Scene3D />
+                </Suspense>
             </div>
-
+            
             <div className="container mx-auto px-6 z-10 text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-6">
-                        Award Winning Digital Agency
-                    </span>
-                    <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6">
-                        We Craft <span className="text-blue-600">Digital</span> <br />
-                        experiences that matter.
+                    <motion.span 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="inline-flex items-center gap-2 py-2 px-6 rounded-full glass text-cyan-400 text-xs font-black uppercase tracking-[0.2em] mb-8 border-cyan-400/20"
+                    >
+                        <Sparkles size={14} className="animate-pulse" />
+                        Digital Excellence Redefined
+                    </motion.span>
+                    
+                    <h1 className="text-6xl md:text-9xl font-black leading-[1.1] mb-8 tracking-tighter">
+                        We Craft <span className="text-gradient">Digital</span> <br />
+                        <span className="dark:text-white text-slate-900 drop-shadow-2xl">Masterpieces.</span>
                     </h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-                        We help forward-thinking brands build their digital presence with modern design and cutting-edge technology.
+                    
+                    <p className="text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-14 font-medium leading-relaxed">
+                        Transforming visionary ideas into exceptional digital realities. We blend <span className="text-blue-500 font-bold">next-gen tech</span> with world-class design.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
                         <Link
                             to="/projects"
-                            className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30 flex items-center group"
+                            className="fancy-button min-w-[240px] text-lg flex items-center justify-center group"
                         >
-                            View Our Work
-                            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            Explore Our Work
+                            <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                         </Link>
                         <Link
                             to="/contact"
-                            className="px-8 py-4 bg-white text-gray-800 font-semibold rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors hover:border-gray-300 flex items-center"
+                            className="fancy-button glass border-blue-500/20 dark:text-white text-slate-800 px-12 py-5 text-lg min-w-[240px]"
                         >
-                            Contact Us
+                            Get in Touch
                         </Link>
                     </div>
                 </motion.div>
             </div>
+            
+            {/* Scroll Indicator */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 1 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+                <span className="text-[10px] uppercase tracking-widest font-bold text-slate-400">Scroll</span>
+                <div className="w-[1px] h-12 bg-gradient-to-b from-blue-500 to-transparent" />
+            </motion.div>
         </section>
     );
 };

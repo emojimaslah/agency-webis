@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Sparkles } from 'lucide-react';
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -23,141 +23,148 @@ const Contact = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-white">
-      {/* Contact Header */}
-      <div className="bg-blue-600 text-white py-20 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-8 left-20 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="container mx-auto px-6 relative z-10 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-                Have a project in mind? We'd love to hear from you.
-            </p>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
+    <div className="pt-32 pb-24 min-h-screen transition-colors duration-500">
+      <div className="container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
             <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
-                <div className="space-y-8">
-                    <div className="flex items-start">
-                        <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                            <MapPin className="w-6 h-6 text-blue-600" />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-1">Our Office</h3>
-                            <p className="text-gray-600">
-                                123 Innovation Drive, Suite 100<br />
-                                Tech City, TC 90210
-                            </p>
-                        </div>
-                    </div>
+              <motion.span 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 py-2 px-4 rounded-full glass text-blue-500 text-xs font-bold uppercase tracking-widest mb-6"
+              >
+                <Sparkles size={14} />
+                Get in Touch
+              </motion.span>
+              <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter dark:text-white text-slate-900">
+                Let's Start a <span className="text-gradient">Conversation.</span>
+              </h1>
+              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">
+                Whether you have a groundbreaking idea or a complex challenge, we're here to help you navigate the digital landscape.
+              </p>
+            </motion.div>
+          </div>
 
-                    <div className="flex items-start">
-                        <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                            <Mail className="w-6 h-6 text-blue-600" />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-1">Email Us</h3>
-                            <p className="text-gray-600">
-                                hello@agency.com<br />
-                                careers@agency.com
-                            </p>
-                        </div>
-                    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Contact Info Pills */}
+            <div className="lg:col-span-5 space-y-6">
+              {[
+                { icon: <MapPin />, title: "Visit Us", content: "123 Innovation Drive, Suite 100, Tech City, TC 90210", color: "from-blue-500 to-indigo-500" },
+                { icon: <Mail />, title: "Email Us", content: "hello@agency.com", color: "from-purple-500 to-pink-500" },
+                { icon: <Phone />, title: "Call Us", content: "+1 (555) 123-4567", color: "from-orange-500 to-red-500" }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 * i, duration: 0.6 }}
+                  className="glass p-8 rounded-[2rem] flex items-center group hover:scale-[1.02] transition-all duration-300"
+                >
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                    {item.icon}
+                  </div>
+                  <div className="ml-6">
+                    <h3 className="text-sm font-black dark:text-slate-400 text-slate-500 uppercase tracking-widest mb-1">{item.title}</h3>
+                    <p className="text-lg font-bold dark:text-white text-slate-900">{item.content}</p>
+                  </div>
+                </motion.div>
+              ))}
 
-                    <div className="flex items-start">
-                        <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                            <Phone className="w-6 h-6 text-blue-600" />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-1">Call Us</h3>
-                            <p className="text-gray-600">
-                                +1 (555) 123-4567<br />
-                                Mon-Fri from 9am to 6pm
-                            </p>
-                        </div>
-                    </div>
+              {/* Decorative Map Image Container */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="glass rounded-[2rem] overflow-hidden p-3 h-64 relative group cursor-pointer"
+              >
+                <div className="absolute inset-x-0 top-0 h-1 z-20 bg-gradient-to-r from-blue-500 to-violet-500" />
+                <img 
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
+                  className="w-full h-full object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-60 group-hover:opacity-100"
+                  alt="Location"
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="bg-white dark:bg-slate-900 px-6 py-3 rounded-2xl shadow-2xl border border-blue-500/20 flex items-center gap-3">
+                    <div className="w-3 h-3 bg-red-500 rounded-full animate-ping" />
+                    <span className="font-black text-xs uppercase tracking-widest dark:text-white text-slate-900">Headquarters</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Form Glass Block */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="lg:col-span-7 glass p-10 md:p-12 rounded-[3rem] relative"
+            >
+              <div className="absolute top-10 right-10 opacity-10">
+                <Send size={120} className="text-blue-500 rotate-12" />
+              </div>
+              
+              <h2 className="text-3xl font-black dark:text-white text-slate-900 mb-10 leading-tight">
+                Send us a Message. <br />
+                <span className="text-blue-500 h-1 w-20 bg-blue-500 inline-block rounded-full" />
+              </h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 ml-2">Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formState.name}
+                      onChange={handleChange}
+                      placeholder="e.g. Elon Musk"
+                      className="w-full glass bg-opacity-30 border-blue-500/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-blue-500/50 transition-all font-medium"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 ml-2">Email Address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formState.email}
+                      onChange={handleChange}
+                      placeholder="elon@mars.com"
+                      className="w-full glass bg-opacity-30 border-blue-500/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-blue-500/50 transition-all font-medium"
+                      required
+                    />
+                  </div>
                 </div>
 
-                {/* Map Display */}
-                <div className="mt-12 w-full h-64 bg-gray-200 rounded-xl overflow-hidden shadow-inner relative">
-                     <img 
-                        src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
-                        alt="Map Location" 
-                        className="w-full h-full object-cover opacity-80"
-                     />
-                     <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                        <span className="bg-white px-4 py-2 rounded-lg shadow-lg font-semibold text-gray-800 flex items-center">
-                            <MapPin size={16} className="mr-2 text-red-500" /> We are here
-                        </span>
-                     </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 ml-2">Project Vision</label>
+                  <textarea
+                    name="message"
+                    rows="5"
+                    value={formState.message}
+                    onChange={handleChange}
+                    placeholder="Describe your vision..."
+                    className="w-full glass bg-opacity-30 border-blue-500/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-blue-500/50 transition-all font-medium resize-none"
+                    required
+                  />
                 </div>
-            </motion.div>
 
-            {/* Contact Form */}
-            <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white p-8 md:p-10 rounded-2xl shadow-lg border border-gray-100"
-            >
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formState.name}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition-colors"
-                            placeholder="John Doe"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formState.email}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition-colors"
-                            placeholder="john@example.com"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="4"
-                            value={formState.message}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition-colors resize-none"
-                            placeholder="Tell us about your project..."
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center"
-                    >
-                        Send Message
-                        <Send size={18} className="ml-2" />
-                    </button>
-                </form>
+                <button
+                  type="submit"
+                  className="fancy-button bg-blue-600 text-white w-full py-5 text-lg flex items-center justify-center gap-3 group overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Dispatch Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </span>
+                </button>
+              </form>
             </motion.div>
+          </div>
         </div>
       </div>
     </div>
