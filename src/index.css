@@ -129,17 +129,41 @@
   }
 
   @keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
 
-    0%,
-    100% {
-      opacity: 0.6;
-      transform: scale(1);
-    }
+  .digital-grid {
+    perspective: 1000px;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
 
-    50% {
-      opacity: 1;
-      transform: scale(1.05);
-    }
+  .perspective-grid {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    bottom: -50%;
+    left: -50%;
+    background-image: 
+      linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(59, 130, 246, 0.2) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: rotateX(60deg);
+    animation: gridScroll 20s linear infinite;
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+  }
+
+  .dark .perspective-grid {
+    background-image: 
+      linear-gradient(to right, rgba(6, 182, 212, 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(6, 182, 212, 0.2) 1px, transparent 1px);
+  }
+
+  @keyframes gridScroll {
+    0% { transform: rotateX(60deg) translateY(0); }
+    100% { transform: rotateX(60deg) translateY(60px); }
   }
 }
 

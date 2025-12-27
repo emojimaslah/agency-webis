@@ -34,7 +34,7 @@ const FeaturedProjects = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
           <div className="max-w-xl">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -43,7 +43,7 @@ const FeaturedProjects = () => {
             >
               Case Studies
             </motion.span>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -52,7 +52,7 @@ const FeaturedProjects = () => {
             >
               Built for <span className="text-gradient">Impact.</span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -82,10 +82,10 @@ const FeaturedProjects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: index * 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="group relative h-[500px] overflow-hidden rounded-[3rem] glass-card border-violet-500/10"
             >
               <div className="absolute inset-0 z-0">

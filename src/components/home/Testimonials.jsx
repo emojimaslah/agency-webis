@@ -56,24 +56,24 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: index * 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
               className="glass-card p-10 rounded-[3rem] relative group border-blue-500/10"
             >
               <Quote className="absolute top-8 right-8 text-blue-500/10 group-hover:text-blue-400 transition-all duration-700 group-hover:rotate-12 group-hover:scale-125" size={60} />
-              
+
               <div className="flex space-x-1 mb-8 text-yellow-400">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={16} fill="currentColor" className="drop-shadow-[0_0_8px_rgba(250,204,21,0.4)]" />
                 ))}
               </div>
-              
+
               <p className="text-slate-600 dark:text-slate-300 italic mb-10 leading-relaxed font-medium text-lg relative z-10 group-hover:dark:text-white transition-colors duration-500">
                 "{testimonial.content}"
               </p>
-              
+
               <div className="flex items-center mt-auto">
                 <div className="relative group/avatar">
                   <img

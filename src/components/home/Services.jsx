@@ -53,11 +53,11 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9, y: 50 }}
+              initial={{ opacity: 0, scale: 0.98, y: 40 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -15, transition: { duration: 0.4 } }}
+              transition={{ delay: index * 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -12, transition: { duration: 0.4 } }}
               className="glass-card p-10 rounded-[3rem] group flex flex-col h-full border-cyan-400/20"
             >
               <div className={`mb-8 w-20 h-20 rounded-3xl flex items-center justify-center bg-gradient-to-br ${service.color} text-white shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700`}>
